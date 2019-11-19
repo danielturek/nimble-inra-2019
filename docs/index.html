@@ -187,8 +187,8 @@ summary {
 <p> </p>
 <div id="welcome-to-the-inra-nimble-workshop" class="section level3">
 <h3>Welcome to the INRA NIMBLE Workshop</h3>
-<p>Over the next two days, you’ll get an introduction to the <code>nimble</code> package for R, including it’s use for MCMC, and other statistical algorithms.</p>
-<p>We’ll also discuss the closely related <code>nimbleEcology</code> package, designed specifically for common ecological model structures.</p>
+<p>Today, you’ll get an introduction to the <code>nimble</code> package for R, including it’s use for MCMC, and other statistical algorithms.</p>
+<p>We’ll also take a look at the <code>nimbleEcology</code> package, designed specifically for common ecological model structures.</p>
 <p> </p>
 <p>You can find these notes, and all workshop materials online:</p>
 <p><a href="https://danielturek.github.io/nimble-inra-2019/index" style="color: blue">https://danielturek.github.io/nimble-inra-2019/index</a></p>
@@ -198,16 +198,93 @@ summary {
 <div id="outline" class="section level3">
 <h3>Outline</h3>
 <p> </p>
-<div id="day-1" class="section level4">
-<h4>Day 1:</h4>
-<p><a href="https://danielturek.github.io/nimble-inra-2019/session1" target="_blank" style="color: blue">Session 1: Introduction to NIMBLE and MCMC</a></p>
-<p><a href="https://danielturek.github.io/nimble-inra-2019/session2" target="_blank" style="color: blue">Session 2: Improving MCMC Performance, and Dipper Model</a></p>
+<div id="part-1-introduction-to-nimble-and-mcmc" class="section level5">
+<h5>Part 1: Introduction to NIMBLE and MCMC</h5>
 <p> </p>
 </div>
-<div id="day-2" class="section level4">
-<h4>Day 2:</h4>
-<p><a href="https://danielturek.github.io/nimble-inra-2019/session3" target="_blank" style="color: blue">Session 3: <code>nimbleEcology</code> R Package</a></p>
-<p><a href="https://danielturek.github.io/nimble-inra-2019/session4" target="_blank" style="color: blue">Session 4: Programming and Advanced Uses of NIMBLE</a></p>
+<div id="nimble-background" class="section level5">
+<h5><a href="https://danielturek.github.io/nimble-inra-2019/nimble_background" target="_blank" style="color: blue">NIMBLE Background</a></h5>
+</div>
+<div id="the-bugs-language" class="section level5">
+<h5><a href="https://danielturek.github.io/nimble-inra-2019/bugs_language" target="_blank" style="color: blue">The BUGS Language</a></h5>
+</div>
+<div id="nimble-model-objects" class="section level5">
+<h5><a href="https://danielturek.github.io/nimble-inra-2019/nimble_models" target="_blank" style="color: blue">NIMBLE Model Objects</a></h5>
+</div>
+<div id="nimble-mcmc-workflow" class="section level5">
+<h5><a href="https://danielturek.github.io/nimble-inra-2019/mcmc_workflow" target="_blank" style="color: blue">NIMBLE MCMC Workflow</a></h5>
+</div>
+<div id="running-an-mcmc" class="section level5">
+<h5><a href="https://danielturek.github.io/nimble-inra-2019/running_mcmc" target="_blank" style="color: blue">Running an MCMC</a></h5>
+</div>
+<div id="convergence-and-posterior-distribution" class="section level5">
+<h5><a href="https://danielturek.github.io/nimble-inra-2019/convergence_posterior" target="_blank" style="color: blue">Convergence and Posterior Distribution</a></h5>
+<p> </p>
+</div>
+<div id="part-2-improving-mcmc-performance-and-dipper-model" class="section level5">
+<h5>Part 2: Improving MCMC Performance, and Dipper Model</h5>
+<p> </p>
+</div>
+<div id="improving-mcmc-performance" class="section level5">
+<h5><a href="https://danielturek.github.io/nimble-inra-2019/improving_performance" target="_blank" style="color: blue">Improving MCMC Performance</a></h5>
+</div>
+<div id="comparing-mcmc-performance-comparemcmcs" class="section level5">
+<h5><a href="https://danielturek.github.io/nimble-inra-2019/compare_mcmcs" target="_blank" style="color: blue">Comparing MCMC Performance: <code>compareMCMCs</code></a></h5>
+</div>
+<div id="cormack-jolly-seber-model-with-dipper-data" class="section level5">
+<h5><a href="https://danielturek.github.io/nimble-inra-2019/cjs_dipper" target="_blank" style="color: blue">Cormack-Jolly-Seber Model with Dipper Data</a></h5>
+</div>
+<div id="exercise-dipper-model-with-gender-and-time" class="section level5">
+<h5><a href="https://danielturek.github.io/nimble-inra-2019/cjs_dipper2" target="_blank" style="color: blue">Exercise: Dipper Model with Gender and Time</a></h5>
+<p> </p>
+</div>
+<div id="part-3-nimbleecology-r-package" class="section level5">
+<h5>Part 3: <code>nimbleEcology</code> R Package</h5>
+<p> </p>
+</div>
+<div id="the-nimbleecology-package" class="section level5">
+<h5><a href="https://danielturek.github.io/nimble-inra-2019/nimble_ecology" target="_blank" style="color: blue">The <code>nimbleEcology</code> Package</a></h5>
+</div>
+<div id="dipper-model-with-dcjs-distribution" class="section level5">
+<h5><a href="https://danielturek.github.io/nimble-inra-2019/dcjs_dipper" target="_blank" style="color: blue">Dipper Model with <code>dCJS</code> Distribution</a></h5>
+</div>
+<div id="occupancy-model" class="section level5">
+<h5><a href="https://danielturek.github.io/nimble-inra-2019/occupancy_model" target="_blank" style="color: blue">Occupancy Model</a></h5>
+</div>
+<div id="occupancy-model-with-docc-distribution" class="section level5">
+<h5><a href="https://danielturek.github.io/nimble-inra-2019/occupancy_model_docc" target="_blank" style="color: blue">Occupancy Model with <code>dOcc</code> Distribution</a></h5>
+</div>
+<div id="multi-state-capture-recapture-model-orchids" class="section level5">
+<h5><a href="https://danielturek.github.io/nimble-inra-2019/orchid_model" target="_blank" style="color: blue">Multi-State Capture-Recapture Model: Orchids</a></h5>
+</div>
+<div id="multi-state-capture-recapture-model-dhmm-distribution" class="section level5">
+<h5><a href="https://danielturek.github.io/nimble-inra-2019/orchid_model_dhmm" target="_blank" style="color: blue">Multi-State Capture-Recapture Model: <code>dHMM</code> distribution</a></h5>
+</div>
+<div id="multi-state-capture-recapture-model-comparisons" class="section level5">
+<h5><a href="https://danielturek.github.io/nimble-inra-2019/orchid_comparison" target="_blank" style="color: blue">Multi-State Capture-Recapture Model: Comparisons</a></h5>
+<p> </p>
+</div>
+<div id="part-4-programming-and-advanced-uses-of-nimble" class="section level5">
+<h5>Part 4: Programming and Advanced Uses of NIMBLE</h5>
+<p> </p>
+</div>
+<div id="one-line-mcmc-nimblemcmc" class="section level5">
+<h5><a href="https://danielturek.github.io/nimble-inra-2019/nimble_mcmc" target="_blank" style="color: blue">One-Line MCMC: <code>nimbleMCMC</code></a></h5>
+</div>
+<div id="maximum-likelihood-using-marginalized-models" class="section level5">
+<h5><a href="https://danielturek.github.io/nimble-inra-2019/marginalized_models" target="_blank" style="color: blue">Maximum Likelihood using Marginalized Models</a></h5>
+</div>
+<div id="sequential-monte-carlo-smc" class="section level5">
+<h5><a href="https://danielturek.github.io/nimble-inra-2019/smc" target="_blank" style="color: blue">Sequential Monte Carlo (SMC)</a></h5>
+</div>
+<div id="programming-in-nimble-and-composition-of-algorithms" class="section level5">
+<h5><a href="https://danielturek.github.io/nimble-inra-2019/composition_algorithms" target="_blank" style="color: blue">Programming in NIMBLE and Composition of Algorithms</a></h5>
+</div>
+<div id="writing-an-mcmc-sampler-in-nimble" class="section level5">
+<h5><a href="https://danielturek.github.io/nimble-inra-2019/writing_sampler" target="_blank" style="color: blue">Writing an MCMC Sampler in NIMBLE</a></h5>
+</div>
+<div id="final-thoughts" class="section level5">
+<h5><a href="https://danielturek.github.io/nimble-inra-2019/final_thoughts" target="_blank" style="color: blue">Final Thoughts</a></h5>
 <p> </p>
 <hr />
 </div>

@@ -12,9 +12,9 @@ output: html_document
 
 ### Welcome to the INRA NIMBLE Workshop
 
-Over the next two days, you'll get an introduction to the `nimble` package for R, including it's use for MCMC, and other statistical algorithms.
+Today, you'll get an introduction to the `nimble` package for R, including it's use for MCMC, and other statistical algorithms.
 
-We'll also discuss the closely related `nimbleEcology` package, designed specifically for common ecological model structures.
+We'll also take a look at the `nimbleEcology` package, designed specifically for common ecological model structures.
 
 
 \  
@@ -30,21 +30,79 @@ You can find these notes, and all workshop materials online:
 
 ### Outline
 
-\  
+\   
 
-#### Day 1:
-
-<a href="https://danielturek.github.io/nimble-inra-2019/session1" target="_blank" style="color: blue">Session 1: Introduction to NIMBLE and MCMC</a>
-
-<a href="https://danielturek.github.io/nimble-inra-2019/session2" target="_blank" style="color: blue">Session 2: Improving MCMC Performance, and Dipper Model</a>
+##### Part 1: Introduction to NIMBLE and MCMC
 
 \   
 
-#### Day 2:
+##### <a href="https://danielturek.github.io/nimble-inra-2019/nimble_background" target="_blank" style="color: blue">NIMBLE Background</a>
 
-<a href="https://danielturek.github.io/nimble-inra-2019/session3" target="_blank" style="color: blue">Session 3: `nimbleEcology` R Package</a>
+##### <a href="https://danielturek.github.io/nimble-inra-2019/bugs_language" target="_blank" style="color: blue">The BUGS Language</a>
 
-<a href="https://danielturek.github.io/nimble-inra-2019/session4" target="_blank" style="color: blue">Session 4: Programming and Advanced Uses of NIMBLE</a>
+##### <a href="https://danielturek.github.io/nimble-inra-2019/nimble_models" target="_blank" style="color: blue">NIMBLE Model Objects</a>
+
+##### <a href="https://danielturek.github.io/nimble-inra-2019/mcmc_workflow" target="_blank" style="color: blue">NIMBLE MCMC Workflow</a>
+
+##### <a href="https://danielturek.github.io/nimble-inra-2019/running_mcmc" target="_blank" style="color: blue">Running an MCMC</a>
+
+##### <a href="https://danielturek.github.io/nimble-inra-2019/convergence_posterior" target="_blank" style="color: blue">Convergence and Posterior Distribution</a>
+
+\   
+
+##### Part 2: Improving MCMC Performance, and Dipper Model
+
+\   
+
+##### <a href="https://danielturek.github.io/nimble-inra-2019/improving_performance" target="_blank" style="color: blue">Improving MCMC Performance</a>
+
+##### <a href="https://danielturek.github.io/nimble-inra-2019/compare_mcmcs" target="_blank" style="color: blue">Comparing MCMC Performance: `compareMCMCs`</a>
+
+##### <a href="https://danielturek.github.io/nimble-inra-2019/cjs_dipper" target="_blank" style="color: blue">Cormack-Jolly-Seber Model with Dipper Data</a>
+
+##### <a href="https://danielturek.github.io/nimble-inra-2019/cjs_dipper2" target="_blank" style="color: blue">Exercise: Dipper Model with Gender and Time</a>
+
+\   
+
+##### Part 3: `nimbleEcology` R Package
+
+\   
+
+##### <a href="https://danielturek.github.io/nimble-inra-2019/nimble_ecology" target="_blank" style="color: blue">The `nimbleEcology` Package</a>
+
+##### <a href="https://danielturek.github.io/nimble-inra-2019/dcjs_dipper" target="_blank" style="color: blue">Dipper Model with `dCJS` Distribution</a>
+
+##### <a href="https://danielturek.github.io/nimble-inra-2019/occupancy_model" target="_blank" style="color: blue">Occupancy Model</a>
+
+##### <a href="https://danielturek.github.io/nimble-inra-2019/occupancy_model_docc" target="_blank" style="color: blue">Occupancy Model with `dOcc` Distribution</a>
+
+##### <a href="https://danielturek.github.io/nimble-inra-2019/orchid_model" target="_blank" style="color: blue">Multi-State Capture-Recapture Model: Orchids</a>
+
+##### <a href="https://danielturek.github.io/nimble-inra-2019/orchid_model_dhmm" target="_blank" style="color: blue">Multi-State Capture-Recapture Model: `dHMM` distribution</a>
+
+##### <a href="https://danielturek.github.io/nimble-inra-2019/orchid_comparison" target="_blank" style="color: blue">Multi-State Capture-Recapture Model: Comparisons</a>
+
+\   
+
+##### Part 4: Programming and Advanced Uses of NIMBLE
+
+\   
+
+##### <a href="https://danielturek.github.io/nimble-inra-2019/nimble_mcmc" target="_blank" style="color: blue">One-Line MCMC: `nimbleMCMC`</a>
+
+##### <a href="https://danielturek.github.io/nimble-inra-2019/marginalized_models" target="_blank" style="color: blue">Maximum Likelihood using Marginalized Models</a>
+
+##### <a href="https://danielturek.github.io/nimble-inra-2019/smc" target="_blank" style="color: blue">Sequential Monte Carlo (SMC)</a>
+
+##### <a href="https://danielturek.github.io/nimble-inra-2019/composition_algorithms" target="_blank" style="color: blue">Programming in NIMBLE and Composition of Algorithms</a>
+
+##### <a href="https://danielturek.github.io/nimble-inra-2019/writing_sampler" target="_blank" style="color: blue">Writing an MCMC Sampler in NIMBLE</a>
+
+##### <a href="https://danielturek.github.io/nimble-inra-2019/final_thoughts" target="_blank" style="color: blue">Final Thoughts</a>
+
+
+
+
 
 \  
 
