@@ -11,39 +11,3 @@ Yes, we will have a projector.
 
 
 
-NIMBLE and Software Installation Instructions
-
-1) R
-Download links and instructions are available at:
-https://cran.r-project.org/
-
-2) RStudio (optional)
-Download links and instructions are available at:
-https://www.rstudio.com/products/rstudio/download/
-
-3) R packages: igraph, coda, nimble
-From RStudio, packages can be installed using the dropdown menu: Tools > Install Packages ...
-From the R prompt, packages can be installed using:
-install.packages("igraph")
-install.packages("coda")
-install.packages("nimble")
-
-4) C++ compiler (Windows: Rtools; Mac OSX: Xcode)
-
-Windows: Install Rtools (https://cran.r-project.org/bin/windows/Rtools/).  Important: during the installation process, you'll have to check the "PATH" checkbox, allowing the installer to modify the system PATH variable, so that R can find Rtools.
-
-Mac OSX: Install Xcode.  This is available from either the Apple Developer Site (https://developer.apple.com/xcode/downloads/), or from the Apple App Store (https://itunes.apple.com/us/app/xcode/id497799835?ls=1&mt=12)
-
-5) To verify you have correctly installed the C++ compiler:
-
-- Restart R (and Rstudio)
-- Install the R package: "devtools"
-- Execute the following R code:
-library(devtools)
-devtools::has_devel()
-
-This final command should not produce any output.  If you do not have a C++ compiler installed, it will give an error message.
-
-6) Additional NIMBLE installation instructions can be found in Chapter 4 of the NIMBLE User Manual:
-https://r-nimble.org/html_manual/cha-installing-nimble.html
-
