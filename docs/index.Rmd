@@ -54,7 +54,7 @@ You can find these notes, and all workshop materials online:
 
 \  
 
-The coding done during the workshop will be <a href="https://danielturek.github.io/nimble-inra-2019/workshop_codes" style="color: blue">made available here</a>.
+The coding done during the workshop will be <a href="https://danielturek.github.io/nimble-inra-2019/workshop_code" style="color: blue">made available here</a>.
 
 
 
