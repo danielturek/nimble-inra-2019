@@ -1,4 +1,5 @@
 setwd('~/github/nimble/nimble-inra-2019')
+library(nimble)
 library(methods)
 library(rmarkdown)
 ##

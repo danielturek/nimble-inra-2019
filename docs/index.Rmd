@@ -50,7 +50,7 @@ You can find these notes, and all workshop materials online:
 
 \   
 
-##### Part 2: Improving MCMC Performance, and Dipper Model
+##### Part 2: Improving MCMC Performance
 
 \   
 

@@ -284,7 +284,7 @@ summary {
 <h3>Visual inspection of posterior distributions</h3>
 <p>We’ll use the <code>basicMCMCplots</code> function to visually inspect the posterior. It provides several functions for looking at one or more MCMC chains.</p>
 <p>First, let’s run the <code>litters</code> MCMC again, to generate 3 chains of samples:</p>
-<pre class="r"><code>samplesList &lt;- runMCMC(cLittersMCMC,
+<pre class="r"><code>samplesList &lt;- runMCMC(Cmcmc,
                        niter = 15000,
                        nburnin = 5000,
                        nchains = 3)
@@ -339,7 +339,7 @@ basicMCMCplots::samplesPlot(samples, var = c(&quot;a&quot;, &quot;b&quot;))</cod
 <p>We’ll use the <code>coda</code> package again to assess convergence of our MCMC.</p>
 <p>We’ll use the commonly used Gelman-Rubin potential scale reduction factor diagnostic, which requires multiple chains.</p>
 <p>However, the <code>gelman.diag</code> from the <code>coda</code> package requires the MCMC samples to be <code>coda.mcmc</code> objects. So, NIMBLE’s <code>runMCMC</code> function provides an option for this:</p>
-<pre class="r"><code>samplesCodaList &lt;- runMCMC(cLittersMCMC,
+<pre class="r"><code>samplesCodaList &lt;- runMCMC(Cmcmc,
                            niter = 15000,
                            nburnin = 5000,
                            nchains = 3,

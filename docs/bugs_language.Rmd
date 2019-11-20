@@ -78,28 +78,30 @@ Here's the original litters model.
 
 Here we specify the litters model code directly in R. We can walk through some of details via the comments in the BUGS code.
 
-<center><img src="fig/litters_code.png"></center>
-
 <!--
-```{r, model-code}
+<center><img src="fig/litters_code.png"></center>
+-->
+
+```{r eval = FALSE}
 library(nimble)
-littersCode <- nimbleCode({
-  for (i in 1:G) {
-     for (j in 1:N) {
-        # likelihood (data model)
-        r[i,j] ~ dbin(p[i,j], n[i,j])
-        # latent process (random effects)
-        p[i,j] ~ dbeta(a[i], b[i]) 
-     }
-     # prior for hyperparameters
-     # such gamma priors are not generally recommended, but
-     # these are the priors from the original example
-     a[i] ~ dgamma(1, .001)
-     b[i] ~ dgamma(1, .001)
-   }
+
+code <- nimbleCode({
+    for (i in 1:G) {
+        ## prior for hyperparameters
+        ## such gamma priors are not generally recommended, but
+        ## these are the priors from the original example
+        a[i] ~ dgamma(1, .001)
+        b[i] ~ dgamma(1, .001)
+        ##
+        for (j in 1:N) {
+            ## latent process (random effects)
+            p[i,j] ~ dbeta(a[i], b[i]) 
+            ## likelihood (data model)
+            r[i,j] ~ dbin(p[i,j], n[i,j])
+        }
+    }
 })
 ```
--->
 
 \  
 

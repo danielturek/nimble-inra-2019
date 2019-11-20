@@ -26,7 +26,19 @@ Note that we can combine steps 1-5 by using `nimbleMCMC`, which in fact does not
 
 We first need to build the model as we did in the previous module.
 
+
+<!--
 <center><img src="fig/litters_model.png"></center>
+-->
+
+```{r eval = FALSE}
+## create a NIMBLE model object:
+Rmodel <- nimbleModel(code, constants, data, inits)
+
+## compile the model object:
+Cmodel <- compileNimble(Rmodel)
+```
+
 
 \  
 
@@ -36,17 +48,19 @@ Setting up and running an MCMC in NIMBLE in this way takes a few more steps than
 
 First we *configure* the MCMC, which means setting up the samplers to be used for each node or group of nodes. NIMBLE provides a default configuration, but we'll see shortly how you can modify that. 
 
-<center><img src="fig/litters_configure.png"></center>
 
 <!--
-```{r, eval = FALSE}
-littersConf <- configureMCMC(littersModel)
-
-littersConf$printMonitors()
-
-littersConf$printSamplers()
-```
+<center><img src="fig/litters_configure.png"></center>
 -->
+
+```{r, eval = FALSE}
+conf <- configureMCMC(Rmodel)
+
+conf$printMonitors()
+
+conf$printSamplers()
+```
+
 
 \  
 
@@ -54,13 +68,14 @@ You also specify the nodes for which you'd like to get the MCMC samples as outpu
 
 Let's add monitors to also monitor the `p` nodes.
 
-<center><img src="fig/litters_add_monitors.png"></center>
 
 <!--
-```{r, eval = FALSE}
-littersConf$addMonitors(c('a', 'b', 'p'))
-```
+<center><img src="fig/litters_add_monitors.png"></center>
 -->
+
+```{r, eval = FALSE}
+conf$addMonitors(c('a', 'b', 'p'))
+```
 
 \  
 
@@ -68,14 +83,16 @@ littersConf$addMonitors(c('a', 'b', 'p'))
 
 Next we'll build the MCMC algorithm for the model under the default configuration. And we'll create a compiled (i.e., C++) version of the MCMC that is equivalent in functionality but will run much faster.
 
-<center><img src="fig/litters_compile_mcmc.png"></center>
 
 <!--
-```{r, eval = FALSE}
-littersMCMC <- buildMCMC(littersConf)
-cLittersMCMC <- compileNimble(littersMCMC, project = littersModel)
-```
+<center><img src="fig/litters_compile_mcmc.png"></center>
 -->
+
+```{r, eval = FALSE}
+Rmcmc <- buildMCMC(conf)
+Cmcmc <- compileNimble(Rmcmc, project = Rmodel)
+```
+
 
 (The *project* argument helps us manage all the C++ that is generated for a given analysis. In general the project can be referenced using the name of the original (uncompiled) model.)
 
@@ -87,17 +104,18 @@ Now we're ready to run the compiled MCMC.
 
 We don't recommend running the R version of the MCMC for very many iterations - it's really slow - in part because iterating in R is slow and in part because iterating with a model in NIMBLE requires even more overhead. 
 
-<center><img src="fig/litters_run_mcmc.png"></center>
 
 <!--
+<center><img src="fig/litters_run_mcmc.png"></center>
+-->
+
 ```{r, eval = FALSE}
 set.seed(1)
 
-samples <- runMCMC(cLittersMCMC,
+samples <- runMCMC(Cmcmc,
                    niter = 15000,
                    nburnin = 5000)
 ```
--->
 
 
 \   

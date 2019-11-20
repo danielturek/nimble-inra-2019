@@ -130,7 +130,7 @@ MCMC chains.
 First, let's run the `litters` MCMC again, to generate 3 chains of samples:
 
 ```{r eval = FALSE}
-samplesList <- runMCMC(cLittersMCMC,
+samplesList <- runMCMC(Cmcmc,
                        niter = 15000,
                        nburnin = 5000,
                        nchains = 3)
@@ -237,7 +237,7 @@ provides an option for this:
 
 
 ```{r eval = FALSE}
-samplesCodaList <- runMCMC(cLittersMCMC,
+samplesCodaList <- runMCMC(Cmcmc,
                            niter = 15000,
                            nburnin = 5000,
                            nchains = 3,
