@@ -41,9 +41,6 @@ Note the following:
 
 The `dCJS_ss` distribution is implemented as a `nimbleFunction` (we'll talk more about these later).
 
-<!--
-## XXXXXXXXXXXXX update dCJS_ss code below, if it changes!!!
--->
 
 \   
 
@@ -98,6 +95,51 @@ Let's modify our dipper code, to use the `dCJS_ss`
 distribution.
 
 The updated model will no longer contain any `x[i, t]` latent states.
+
+\   
+
+```{r eval = FALSE}
+library(nimble)
+library(nimbleEcology)
+
+load('~/Downloads/dipper_data.Rdata')
+
+dipperCodeCJS <- nimbleCode({
+    phi ~ dunif(0, 1)
+    p ~ dunif(0, 1)
+    for(i in 1:N) {
+        ##x[i, first[i]] <- 1
+        ##y[i, first[i]] <- 1
+        ##for(t in first[i]:T) {
+        ##    x[i, t] ~ dbern(phi * x[i, t-1])
+        ##    y[i, t] ~ dbern(p * x[i, t])
+        ##}
+        y[i, first[i]:T] ~ dCJS_ss(probSurvive = phi,
+                                   probCapture = p,
+                                   len = T - first[i] + 1)
+    }
+})
+
+N <- dim(sightings)[1]
+T <- dim(sightings)[2]
+
+dipperConstsCJS <- list(N = N, T = T, first = first)
+
+dipperDataCJS <- list(y = sightings)
+
+dipperInitsCJS <- list(phi = 0.5, p = 0.5)
+
+Rmodel <- nimbleModel(dipperCodeCJS, dipperConstsCJS, dipperDataCJS, dipperInitsCJS)
+
+conf <- configureMCMC(Rmodel)
+Rmcmc <- buildMCMC(conf)
+
+Cmodel <- compileNimble(Rmodel)
+Cmcmc <- compileNimble(Rmcmc, project = Rmodel)
+
+set.seed(0)
+samplesCJS <- runMCMC(Cmcmc, niter = 20000, nburnin = 10000)
+```
 
 
 \  

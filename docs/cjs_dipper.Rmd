@@ -47,6 +47,48 @@ In our model, we'll use the following nodes:
 
 We'll also have to take care to provide appropriate initial values for the `x` matrix.
 
+\   
+
+```{r eval = FALSE}
+library(nimble)
+
+load('~/Downloads/dipper_data.Rdata')
+
+dipperCode <- nimbleCode({
+    phi ~ dunif(0, 1)
+    p ~ dunif(0, 1)
+    for(i in 1:N) {
+        x[i, first[i]] <- 1
+        y[i, first[i]] <- 1
+        for(t in (first[i]+1):T) {
+            x[i, t] ~ dbern(phi * x[i, t-1])
+            y[i, t] ~ dbern(p * x[i, t])
+        }
+    }
+})
+
+N <- dim(sightings)[1]
+T <- dim(sightings)[2]
+
+dipperConsts <- list(N = N, T = T, first = first)
+
+dipperData <- list(y = sightings)
+
+xInit <- ifelse(!is.na(sightings), 1, 0)
+
+dipperInits <- list(phi = 0.5, p = 0.5, x = xInit)
+
+Rmodel <- nimbleModel(dipperCode, dipperConsts, dipperData, dipperInits)
+
+conf <- configureMCMC(Rmodel)
+Rmcmc <- buildMCMC(conf)
+
+Cmodel <- compileNimble(Rmodel)
+Cmcmc <- compileNimble(Rmcmc, project = Rmodel)
+
+set.seed(0)
+samples <- runMCMC(Cmcmc, niter = 20000, nburnin = 10000)
+```
 
 \   
 
@@ -62,6 +104,20 @@ Here are the results I got, for our first dipper CJS model:
 ```{r }
 round(samplesSummary(samples), 3)
 ```
+
+\   
+
+A visual inspection of the posterior distributions:
+
+\   
+
+```{r }
+library(basicMCMCplots)
+
+basicMCMCplots::samplesPlot(samples)
+```
+
+
 
 
 

@@ -31,7 +31,7 @@ You can find these notes, and all workshop materials online:
 
 ---
 
-### Part 1: Introduction to NIMBLE and MCMC
+#### Part 1: Introduction to NIMBLE and MCMC
 
 \   
 
@@ -51,7 +51,7 @@ You can find these notes, and all workshop materials online:
 
 ---
 
-### Part 2: MCMC Performance
+#### Part 2: MCMC Performance
 
 \   
 
@@ -65,7 +65,7 @@ You can find these notes, and all workshop materials online:
 
 ---
 
-### Part 3: The `nimbleEcology` R Package
+#### Part 3: The `nimbleEcology` R Package
 
 \   
 
@@ -93,7 +93,7 @@ You can find these notes, and all workshop materials online:
 
 ---
 
-### Part 4: Programming and Advanced Uses of NIMBLE
+#### Part 4: Programming and Advanced Uses of NIMBLE
 
 \   
 

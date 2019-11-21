@@ -44,6 +44,51 @@ $$\text{logit}(p_{i,j}) = \beta_1 + \beta_2 \cdot \text{wind}_{i,j}$$
 
 \   
 
+
+```{r eval = FALSE}
+library(nimble)
+
+load('~/Downloads/occupancy_data.Rdata')
+
+occCode <- nimbleCode({
+    for(i in 1:2) {
+        alpha[i] ~ dunif(-100, 100)
+        beta[i] ~ dunif(-100, 100)
+    }
+    for(i in 1:S) {
+        logit(psi[i]) <- alpha[1] + alpha[2] * vege[i]
+        z[i] ~ dbern(psi[i])
+        for(j in 1:T) {
+            logit(p[i,j]) <- beta[1] + beta[2] * wind[i,j]
+            y[i,j] ~ dbern(z[i] * p[i,j])
+        }
+    }
+})
+
+S <- dim(obs)[1]
+T <- dim(obs)[2]
+
+occConsts <- list(S = S, T = T, wind = wind, vege = vege)
+
+occData <- list(y = obs)
+
+occInits <- list(alpha = rep(0, 2), beta = rep(0, 2), z = rep(1, S))
+
+Rmodel <- nimbleModel(occCode, occConsts, occData, occInits)
+
+conf <- configureMCMC(Rmodel)
+
+Rmcmc <- buildMCMC(conf)
+
+Cmodel <- compileNimble(Rmodel)
+Cmcmc <- compileNimble(Rmcmc, project = Rmodel)
+
+set.seed(0)
+samples <- runMCMC(Cmcmc, niter = 20000, nburnin = 10000)
+```
+
+\   
+
 ### Results and True Values
 
 I ran this model for `niter = 20000` samples, and discarded the first `nburnin = 10000` samples as vurnin.
@@ -72,6 +117,8 @@ The true values that were used for generating the data were:
 \   
 
 ```{r fig.height = 4, fig.width = 8}
+library(basicMCMCplots)
+
 basicMCMCplots::samplesPlot(samples)
 ```
 

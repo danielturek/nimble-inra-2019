@@ -211,9 +211,6 @@ summary {
 <div id="implementation-of-the-dcjs_ss-distribution" class="section level3">
 <h3>Implementation of the <code>dCJS_ss</code> distribution</h3>
 <p>The <code>dCJS_ss</code> distribution is implemented as a <code>nimbleFunction</code> (we’ll talk more about these later).</p>
-<!--
-## XXXXXXXXXXXXX update dCJS_ss code below, if it changes!!!
--->
 <p> </p>
 <pre class="r"><code>dCJS_ss &lt;- nimbleFunction(
     run = function(
@@ -257,6 +254,47 @@ summary {
 <h3>Exercise: Implementing the <code>dCJS</code> dipper model</h3>
 <p>Let’s modify our dipper code, to use the <code>dCJS_ss</code> distribution.</p>
 <p>The updated model will no longer contain any <code>x[i, t]</code> latent states.</p>
+<p> </p>
+<pre class="r"><code>library(nimble)
+library(nimbleEcology)
+
+load('~/Downloads/dipper_data.Rdata')
+
+dipperCodeCJS &lt;- nimbleCode({
+    phi ~ dunif(0, 1)
+    p ~ dunif(0, 1)
+    for(i in 1:N) {
+        ##x[i, first[i]] &lt;- 1
+        ##y[i, first[i]] &lt;- 1
+        ##for(t in first[i]:T) {
+        ##    x[i, t] ~ dbern(phi * x[i, t-1])
+        ##    y[i, t] ~ dbern(p * x[i, t])
+        ##}
+        y[i, first[i]:T] ~ dCJS_ss(probSurvive = phi,
+                                   probCapture = p,
+                                   len = T - first[i] + 1)
+    }
+})
+
+N &lt;- dim(sightings)[1]
+T &lt;- dim(sightings)[2]
+
+dipperConstsCJS &lt;- list(N = N, T = T, first = first)
+
+dipperDataCJS &lt;- list(y = sightings)
+
+dipperInitsCJS &lt;- list(phi = 0.5, p = 0.5)
+
+Rmodel &lt;- nimbleModel(dipperCodeCJS, dipperConstsCJS, dipperDataCJS, dipperInitsCJS)
+
+conf &lt;- configureMCMC(Rmodel)
+Rmcmc &lt;- buildMCMC(conf)
+
+Cmodel &lt;- compileNimble(Rmodel)
+Cmcmc &lt;- compileNimble(Rmcmc, project = Rmodel)
+
+set.seed(0)
+samplesCJS &lt;- runMCMC(Cmcmc, niter = 20000, nburnin = 10000)</code></pre>
 <p> </p>
 </div>
 <div id="results" class="section level3">

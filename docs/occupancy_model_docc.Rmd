@@ -77,6 +77,53 @@ chainsPlot(list(orig = samples, dOcc = samples2))
 
 \   
 
+```{r eval = FALSE}
+library(nimble)
+
+load('~/Downloads/occupancy_data.Rdata')
+
+occCode2 <- nimbleCode({
+    for(i in 1:2) {
+        alpha[i] ~ dunif(-100, 100)
+        beta[i] ~ dunif(-100, 100)
+    }
+    for(i in 1:S) {
+        logit(psi[i]) <- alpha[1] + alpha[2] * vege[i]
+        ##z[i] ~ dbern(psi[i])
+        ##for(j in 1:T) {
+        ##    logit(p[i,j]) <- beta[1] + beta[2] * wind[i,j]
+        ##    y[i,j] ~ dbern(z[i] * p[i,j])
+        ##}
+        logit(p[i,1:T]) <- beta[1] + beta[2] * wind[i,1:T]
+        y[i,1:T] ~ dOcc_v(probOcc = psi[i], probDetect = p[i,1:T], len = T)
+    }
+})
+
+S <- dim(obs)[1]
+T <- dim(obs)[2]
+
+occConsts2 <- list(S = S, T = T, wind = wind, vege = vege)
+
+occData2 <- list(y = obs)
+
+occInits2 <- list(alpha = rep(0, 2), beta = rep(0, 2))
+
+Rmodel <- nimbleModel(occCode2, occConsts2, occData2, occInits2)
+
+conf <- configureMCMC(Rmodel)
+
+Rmcmc <- buildMCMC(conf)
+
+Cmodel <- compileNimble(Rmodel)
+Cmcmc <- compileNimble(Rmcmc, project = Rmodel)
+
+set.seed(0)
+samples2 <- runMCMC(Cmcmc, niter = 20000, nburnin = 10000)
+```
+
+
+\   
+
 ### Results
 
 
@@ -104,8 +151,6 @@ basicMCMCplots::chainsSummary(list(orig = samples, dOcc = samples2),
 
 
 ```{r }
-library(basicMCMCplots)
-
 basicMCMCplots::chainsPlot(list(orig = samples, dOcc = samples2))
 ```
 
