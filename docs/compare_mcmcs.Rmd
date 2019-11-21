@@ -43,8 +43,92 @@ make_MCMC_comparison_pages(comp, dir, modelName)
 
 \   
 
-Let's try using `compareMCMCs`, to compare these different versions of the litters model.
+### Example of `compareMCMCs`: Litters model
 
+<!--
+Let's try using `compareMCMCs`, to compare these different versions of the litters model.
+-->
+
+Here's a full example of using `compareMCMCs`, to compare three different MCMC algorithms applied to the litters model
+
+
+```{r eval = FALSE}
+
+code <- nimbleCode({
+    for (i in 1:G) {
+        a[i] ~ dgamma(1, .001)
+        b[i] ~ dgamma(1, .001)
+        for (j in 1:N) {
+            ## random effects
+            p[i,j] ~ dbeta(a[i], b[i]) 
+            ## likelihood
+            r[i,j] ~ dbin(p[i,j], n[i,j])
+        }
+    }
+})
+
+
+load('~/Downloads/litters_data.Rdata')
+
+G <- dim(n)[1]
+
+N <- dim(n)[2]
+
+constants <- list(N = N, G = G, n = n)
+
+data <- list(r = r)
+
+inits <- list(a = c(1, 1),
+              b = c(1, 1),
+              p = array(0.5, c(G,N)))
+
+
+
+library(compareMCMCs)
+
+mi <- list(code = code,
+           constants = constants,
+           data = data,
+           inits = inits)
+           
+MCMCs <- c('nimble',       ## nimble default
+           'nimble_slice', ## slice sampling
+           'block1')       ## block (a1,b1), (a2,b2)
+
+defs <- list(
+    block1 = function(model) {
+        ## take "model" argument
+        ## and must return the "conf" object
+        conf <- configureMCMC(model)
+        conf$removeSamplers(c('a', 'b'))
+        conf$addSampler(target=c('a[1]','b[1]'),
+                        type = 'RW_block')
+        conf$addSampler(target=c('a[2]','b[2]'),
+                        type = 'RW_block')
+        return(conf)
+    }
+)
+
+ctrl <- list(niter = 20000,
+             nburnin = 10000)
+
+comp <- compareMCMCs(modelInfo = mi,
+                     MCMCs = MCMCs,
+                     nimbleMCMCdefs = defs,
+                     MCMCcontrol = ctrl)
+
+make_MCMC_comparison_pages(comp,
+                           dir = '~/Desktop/inra',
+                           modelName = 'litters')
+```
+
+\   
+
+### `compareMCMCs` Results pages
+
+\   
+
+The results pages created by `compareMCMC` can be seen <a href="https://danielturek.github.io/nimble-inra-2019/comparisons/litters" target="_blank" style="color: blue">here</a>.
 
 
 \  

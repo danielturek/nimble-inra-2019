@@ -138,6 +138,8 @@ samplesList <- runMCMC(Cmcmc,
 samples <- samplesList[[1]]
 ```
 
+\   
+
 ### `samplesPlot` function for looking at one chain
 
 We'll look at the first chain only, first.
@@ -260,7 +262,8 @@ This is not very good.  The mixing of the `a[1]` and `b[1]` has not converged.
 ### Other MCMC tools in NIMBLE
 
   - WAIC for model comparison
-  - Cross-validation
+  - Reversible-jump for variable selection
+  - Model cross-validation
 
 
 

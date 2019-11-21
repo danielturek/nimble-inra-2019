@@ -115,6 +115,8 @@ Once you've defined the code, constants, data, and initial values, a model objec
 Rmodel <- nimbleModel(code, constants, data, inits)
 ```
 
+\  
+
 If all you want to do is run an MCMC, NIMBLE's fine-grained control might not be so interesting to you, in which case you can just use `nimbleMCMC()` without using `nimbleModel()` to create the model. But by providing an explicit model object, we allow you to operate the model and program with it.
 
 \  

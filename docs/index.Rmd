@@ -48,6 +48,8 @@ You can find these notes, and all workshop materials online:
 
 ##### <a href="https://danielturek.github.io/nimble-inra-2019/convergence_posterior" target="_blank" style="color: blue">Convergence and Posterior Distribution</a>
 
+
+
 \   
 
 ##### Part 2: Improving MCMC Performance
@@ -61,6 +63,8 @@ You can find these notes, and all workshop materials online:
 ##### <a href="https://danielturek.github.io/nimble-inra-2019/cjs_dipper" target="_blank" style="color: blue">Cormack-Jolly-Seber Model with Dipper Data</a>
 
 ##### <a href="https://danielturek.github.io/nimble-inra-2019/cjs_dipper2" target="_blank" style="color: blue">Exercise: Dipper Model with Gender and Time</a>
+
+
 
 \   
 
@@ -81,6 +85,8 @@ You can find these notes, and all workshop materials online:
 ##### <a href="https://danielturek.github.io/nimble-inra-2019/orchid_model_dhmm" target="_blank" style="color: blue">Multi-State Capture-Recapture Model: `dHMM` distribution</a>
 
 ##### <a href="https://danielturek.github.io/nimble-inra-2019/orchid_comparison" target="_blank" style="color: blue">Multi-State Capture-Recapture Model: Comparisons</a>
+
+
 
 \   
 

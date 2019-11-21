@@ -204,7 +204,85 @@ library(compareMCMCs)</code></pre>
 
 make_MCMC_comparison_pages(comp, dir, modelName)</code></pre>
 <p> </p>
-<p>Let’s try using <code>compareMCMCs</code>, to compare these different versions of the litters model.</p>
+</div>
+<div id="example-of-comparemcmcs-litters-model" class="section level3">
+<h3>Example of <code>compareMCMCs</code>: Litters model</h3>
+<!--
+Let's try using `compareMCMCs`, to compare these different versions of the litters model.
+-->
+<p>Here’s a full example of using <code>compareMCMCs</code>, to compare three different MCMC algorithms applied to the litters model</p>
+<pre class="r"><code>code &lt;- nimbleCode({
+    for (i in 1:G) {
+        a[i] ~ dgamma(1, .001)
+        b[i] ~ dgamma(1, .001)
+        for (j in 1:N) {
+            ## random effects
+            p[i,j] ~ dbeta(a[i], b[i]) 
+            ## likelihood
+            r[i,j] ~ dbin(p[i,j], n[i,j])
+        }
+    }
+})
+
+
+load('~/Downloads/litters_data.Rdata')
+
+G &lt;- dim(n)[1]
+
+N &lt;- dim(n)[2]
+
+constants &lt;- list(N = N, G = G, n = n)
+
+data &lt;- list(r = r)
+
+inits &lt;- list(a = c(1, 1),
+              b = c(1, 1),
+              p = array(0.5, c(G,N)))
+
+
+
+library(compareMCMCs)
+
+mi &lt;- list(code = code,
+           constants = constants,
+           data = data,
+           inits = inits)
+           
+MCMCs &lt;- c('nimble',       ## nimble default
+           'nimble_slice', ## slice sampling
+           'block1')       ## block (a1,b1), (a2,b2)
+
+defs &lt;- list(
+    block1 = function(model) {
+        ## take &quot;model&quot; argument
+        ## and must return the &quot;conf&quot; object
+        conf &lt;- configureMCMC(model)
+        conf$removeSamplers(c('a', 'b'))
+        conf$addSampler(target=c('a[1]','b[1]'),
+                        type = 'RW_block')
+        conf$addSampler(target=c('a[2]','b[2]'),
+                        type = 'RW_block')
+        return(conf)
+    }
+)
+
+ctrl &lt;- list(niter = 20000,
+             nburnin = 10000)
+
+comp &lt;- compareMCMCs(modelInfo = mi,
+                     MCMCs = MCMCs,
+                     nimbleMCMCdefs = defs,
+                     MCMCcontrol = ctrl)
+
+make_MCMC_comparison_pages(comp,
+                           dir = '~/Desktop/inra',
+                           modelName = 'litters')</code></pre>
+<p> </p>
+</div>
+<div id="comparemcmcs-results-pages" class="section level3">
+<h3><code>compareMCMCs</code> Results pages</h3>
+<p> </p>
+<p>The results pages created by <code>compareMCMC</code> can be seen <a href="https://danielturek.github.io/nimble-inra-2019/comparisons/litters" target="_blank" style="color: blue">here</a>.</p>
 <p> </p>
 <p> </p>
 <p> </p>

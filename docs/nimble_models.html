@@ -264,6 +264,7 @@ Rmodel &lt;- nimbleModel(code, constants, data, inits)</code></pre>
 <pre><code>## running calculate on model (any error reports that follow may simply reflect missing values in model variables) ... 
 ## checking model sizes and dimensions... This model is not fully initialized. This is not an error. To see which variables are not initialized, use model$initializeInfo(). For more information on model initialization, see help(modelInitialization).
 ## model building finished.</code></pre>
+<p> </p>
 <p>If all you want to do is run an MCMC, NIMBLE’s fine-grained control might not be so interesting to you, in which case you can just use <code>nimbleMCMC()</code> without using <code>nimbleModel()</code> to create the model. But by providing an explicit model object, we allow you to operate the model and program with it.</p>
 <p> </p>
 </div>

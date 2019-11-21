@@ -8,8 +8,6 @@ output: html_document
 \   
 
 
-### A very
-
 The steps of running an MCMC are as follows:
 
  1. Build a model object (`nimbleModel`)
