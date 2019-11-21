@@ -19,6 +19,9 @@ We'll also take a look at the `nimbleEcology` package, designed specifically for
 
 \  
 
+
+### Link
+
 You can find these notes, and all workshop materials online:
 
 <a href="https://danielturek.github.io/nimble-inra-2019/index" style="color: blue">https://danielturek.github.io/nimble-inra-2019/index</a>
@@ -28,11 +31,7 @@ You can find these notes, and all workshop materials online:
 
 ---
 
-### Outline
-
-\   
-
-##### Part 1: Introduction to NIMBLE and MCMC
+### Part 1: Introduction to NIMBLE and MCMC
 
 \   
 
@@ -46,33 +45,35 @@ You can find these notes, and all workshop materials online:
 
 ##### <a href="https://danielturek.github.io/nimble-inra-2019/running_mcmc" target="_blank" style="color: blue">Running an MCMC</a>
 
+
+
+\   
+
+---
+
+### Part 2: MCMC Performance
+
+\   
+
 ##### <a href="https://danielturek.github.io/nimble-inra-2019/convergence_posterior" target="_blank" style="color: blue">Convergence and Posterior Distribution</a>
-
-
-
-\   
-
-##### Part 2: Improving MCMC Performance
-
-\   
 
 ##### <a href="https://danielturek.github.io/nimble-inra-2019/improving_performance" target="_blank" style="color: blue">Improving MCMC Performance</a>
 
 ##### <a href="https://danielturek.github.io/nimble-inra-2019/compare_mcmcs" target="_blank" style="color: blue">Comparing MCMC Performance: `compareMCMCs`</a>
 
-##### <a href="https://danielturek.github.io/nimble-inra-2019/cjs_dipper" target="_blank" style="color: blue">Cormack-Jolly-Seber Model with Dipper Data</a>
-
-##### <a href="https://danielturek.github.io/nimble-inra-2019/cjs_dipper2" target="_blank" style="color: blue">Exercise: Dipper Model with Gender and Time</a>
-
-
-
 \   
 
-##### Part 3: `nimbleEcology` R Package
+---
+
+### Part 3: The `nimbleEcology` R Package
 
 \   
 
 ##### <a href="https://danielturek.github.io/nimble-inra-2019/nimble_ecology" target="_blank" style="color: blue">The `nimbleEcology` Package</a>
+
+##### <a href="https://danielturek.github.io/nimble-inra-2019/cjs_dipper" target="_blank" style="color: blue">Cormack-Jolly-Seber Model with Dipper Data</a>
+
+##### <a href="https://danielturek.github.io/nimble-inra-2019/cjs_dipper2" target="_blank" style="color: blue">Exercise: Dipper Model with Gender and Time</a>
 
 ##### <a href="https://danielturek.github.io/nimble-inra-2019/dcjs_dipper" target="_blank" style="color: blue">Dipper Model with `dCJS` Distribution</a>
 
@@ -90,7 +91,9 @@ You can find these notes, and all workshop materials online:
 
 \   
 
-##### Part 4: Programming and Advanced Uses of NIMBLE
+---
+
+### Part 4: Programming and Advanced Uses of NIMBLE
 
 \   
 

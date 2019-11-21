@@ -85,19 +85,10 @@ Rmodel$getLogProb('p')  # now we're good
 
 ## block sampling with initial covariance matrices:
 
-## compareMCMCs:
 
-library(compareMCMCs)
 
-comp <- compareMCMCs(modelInfo,
-                     MCMCs,
-                     nimbleMCMCdefs,
-                     monitors,
-                     MCMCcontrol)
 
-make_MCMC_comparison_pages(comp,
-                           dir,
-                           modelName)
+
 
 
 
